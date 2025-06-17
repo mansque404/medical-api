@@ -1,0 +1,37 @@
+service: medical-appointment-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  environment:
+    NODE_ENV: ${self:provider.stage}
+  httpApi:
+    cors: true
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+functions:
+  getAgendas:
+    handler: src/agenda/controller/agenda.handler
+    events:
+      - httpApi:
+          path: /agendas
+          method: get
+  
+  createAgendamento:
+    handler: src/agendamento/controller/agendamento.handler
+    events:
+      - httpApi:
+          path: /agendamento
+          method: post
+
+custom:
+  serverless-offline:
+    httpPort: 3000
+    host: 0.0.0.0
