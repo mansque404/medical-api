@@ -30,6 +30,19 @@ functions:
       - httpApi:
           path: /agendamento
           method: post
+  swaggerJson:
+    handler: src/swagger/swagger.handler.swaggerJsonHandler
+    events:
+      - httpApi:
+          path: /swagger.json
+          method: get
+  
+  swaggerUI:
+    handler: src/swagger/swagger.handler.swaggerUIHandler
+    events:
+      - httpApi:
+          path: /docs
+          method: get
 
 custom:
   serverless-offline:

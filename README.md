@@ -68,6 +68,35 @@ Uma API RESTful desenvolvida com Node.js, TypeScript, Serverless Framework e AWS
 }
 \`\`\`
 
+## 📚 Documentação da API
+
+A API possui documentação completa usando Swagger/OpenAPI 3.0.
+
+### Acessando a Documentação
+
+#### Desenvolvimento Local
+- **Swagger UI:** http://localhost:3000/docs
+- **JSON Schema:** http://localhost:3000/swagger.json
+
+#### Produção
+- **Swagger UI:** https://api.agendamento-medico.com/docs
+- **JSON Schema:** https://api.agendamento-medico.com/swagger.json
+
+### Recursos da Documentação
+
+- **Interface interativa** para testar endpoints
+- **Esquemas detalhados** de request/response
+- **Exemplos práticos** para cada endpoint
+- **Validações e formatos** de dados
+- **Códigos de status** e tratamento de erros
+
+### Testando via Swagger UI
+
+1. Acesse http://localhost:3000/docs
+2. Explore os endpoints disponíveis
+3. Use o botão "Try it out" para testar
+4. Visualize as respostas em tempo real
+
 ## 🏗️ Arquitetura
 
 O projeto segue uma arquitetura limpa e modular:
@@ -137,12 +166,17 @@ A API estará disponível em: `http://localhost:3000`
 
 ### Testando os Endpoints
 
-#### 1. Buscar Agendas
+#### Via Swagger UI (Recomendado)
+Acesse http://localhost:3000/docs para uma interface interativa completa.
+
+#### Via cURL
+
+##### 1. Buscar Agendas
 \`\`\`bash
 curl -X GET http://localhost:3000/agendas
 \`\`\`
 
-#### 2. Criar Agendamento
+##### 2. Criar Agendamento
 \`\`\`bash
 curl -X POST http://localhost:3000/agendamento \
   -H "Content-Type: application/json" \
@@ -153,6 +187,15 @@ curl -X POST http://localhost:3000/agendamento \
       "data_horario": "2024-10-05 09:00"
     }
   }'
+\`\`\`
+
+##### 3. Acessar Documentação
+\`\`\`bash
+# Swagger UI
+curl -X GET http://localhost:3000/docs
+
+# JSON Schema
+curl -X GET http://localhost:3000/swagger.json
 \`\`\`
 
 ## 🧪 Testes
